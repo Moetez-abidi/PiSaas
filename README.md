@@ -3,7 +3,7 @@
 2. Déployer l'image docker sur AWS ElasticBeanStalk.
 
 # Prérequis
-1. Tester l'application en local : http://localhost:18080/POC_PI_AWS-web/index.jsf ==> elle devra afficher votre IP publique et votre localisation géographique
+1. Tester l'application en local 
 2. Installer Docker sur votre machine
 3. Avoir un compte sur DockerHub
 
@@ -33,7 +33,6 @@ Dockerfile:
 #https://hub.docker.com/r/jboss/wildfly
 FROM jboss/wildfly:9.0.0.Final
 COPY POC_PI_AWS-ear.ear /opt/jboss/wildfly/standalone/deployments/
-CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
 ```
 
 1. Il faut copier le ear a coté du Dockerfile
@@ -53,7 +52,7 @@ Lancer le container
 ```
 docker run -it --name wildfly-poc-aws-container -p 8080:8080 wildfly-poc-aws
 ```
-Et maintenant, il faut tester l'application en local : http://localhost:18080/POC_PI_AWS-web/index.jsf
+Et maintenant, il faut tester l'application en local : http://localhost:8080/POC_PI_AWS-web/index.jsf
 
 
 # Mettre l'image sur DockerHub
@@ -67,11 +66,11 @@ docker images
 ```
 Pour pouvoir faire le push il faut que le nom de l'image commence par votre username sur DockerHub (c'est le nom du repository par défaut)
  ```
- docker tag wildfly-poc-aws yaich/wildfly-poc-aws
+ docker tag wildfly-poc-aws wildfly-poc-aws
  ```
 Faire le push sur DockerHub
 ```
-docker push yaich/wildfly-poc-aws
+docker push wildfly-poc-aws
 ```
 
 # Déployer l'image sur AWS ElasticBeanStalk
