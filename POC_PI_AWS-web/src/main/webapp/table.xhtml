@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<ui:define name="title"> Create your company</ui:define>
+    <ui:define name="content">
+
+<h:form>
+<h:outputLabel for="rayonid">
+ <h:outputText value="enter the id"></h:outputText>
+</h:outputLabel>
+
+<h:outputLabel for="ProductName">
+ <h:outputText value="enter the Product Name"></h:outputText>
+</h:outputLabel>
+
+<h:outputLabel for="RayonType">
+ <h:outputText value="enter the Rayon Type"></h:outputText>
+</h:outputLabel>
+
+<h:link outcome="/create" value="Ajouter Rayon "/>	
+	
+<h:dataTable value="#{RayonBean.Rayons}" var="rayon" border="1">
+<h:column>
+<f:facet name="header">
+<h:outputText value="Id" />
+</f:facet>
+<h:outputText value="#{rayon.id}" />
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="ProduitName" />
+</f:facet>
+<h:outputText value="#{rayon.ProduitName}" />
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="RayonType" />
+</f:facet>
+<h:commandButton action="#{rayon.RayonType}" />
+</h:column>
+
+<h:column>
+<f:facet name="header">
+<h:outputText value="Delete" />
+</f:facet>
+<h:commandButton action="#{RayonBean.DeleteCompany(rayon.id)}" value="Delete" />
+</h:column>
+
+</h:dataTable>
+
+
+	
+	</h:form>
+	</ui:define>
+
+</ui:composition>
